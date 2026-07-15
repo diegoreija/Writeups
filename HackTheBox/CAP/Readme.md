@@ -18,8 +18,7 @@ ping 10.129.30.28
 
 A response with TTL 63 confirms the target is a Linux host (Windows machines typically respond with TTL 127 or 128).
 
-[Insertar aquí la imagen original - ping]
-
+![Descripción de la imagen](./screenshots/01.png)
 ### Port scanning
 
 ```bash
