@@ -67,3 +67,31 @@ The exposed report allows downloading a `.pcap` file. Since it's a packet captur
 ![Wireshark overview](./screenshots/05-wireshark.png)
 
 Filtering for FTP traffic specifically makes sense here, since FTP was already flagged earlier as cleartext. Following the TCP stream confirms the assumption — the full authentication exchange is visible in plain text:
+
+
+
+![FTP stream showing credentials](./screenshots/06-ftp-creds.png)
+
+## Initial Access
+
+With valid credentials in hand, FTP is tested first simply to confirm they work — which they do. SSH is the more useful target though, since it provides an interactive shell rather than just file access:
+
+```bash
+ssh nathan@10.129.30.28
+```
+
+This grants a shell as `nathan`.
+
+**User flag:** `[completar]`
+
+## Privilege Escalation
+
+*[Pendiente de completar — la escalada explota una Linux capability mal configurada asignada a un binario de Python. Añadir aquí: el comando `getcap` usado para identificarla, por qué esa capability concreta es peligrosa (qué permite hacer que no debería), el binario afectado, y el comando/exploit final usado para obtener una shell como root.]*
+
+**Root flag:** `[completar]`
+
+## Lessons Learned
+
+- Sequential, numeric IDs in URLs (`/data/1`, `/data/0`) are worth testing for IDOR — if changing the ID alone changes what data you see, authorization likely isn't being checked server-side.
+- Cleartext protocols like FTP shouldn't be assumed safe even on an internal/VPN network — any captured traffic (accidentally exposed or otherwise) can leak credentials in full.
+- Linux capabilities assigned to interpreters (like Python) need extra scrutiny, since the capability applies to anything the interpreter executes — not just the script it was intended for.
