@@ -20,7 +20,7 @@ ping 10.129.30.28
 
 The response comes back with **TTL 63**, which points to a Linux target — Windows hosts typically reply with TTL 127 or 128. This helps decide which enumeration paths are worth prioritizing later (e.g. Linux capabilities over Windows services).
 
-![Ping response showing TTL 63](./screenshots/01-ping-nmap-scan.png)
+![Ping response showing TTL 63](./screenshots/01-ping.png)
 
 ### Port scanning
 
@@ -32,7 +32,7 @@ nmap -sV -sS 10.129.30.28
 
 `-sS` was used for a fast SYN scan, and `-sV` to fingerprint service versions — version info matters here because it can point to known, exploitable software.
 
-![Nmap scan results](./screenshots/02)
+![Nmap scan results](./screenshots/02-namp-scan.png)
 
 **Results:**
 
