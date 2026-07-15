@@ -20,7 +20,7 @@ ping 10.129.30.28
 
 The response comes back with **TTL 63**, which points to a Linux target — Windows hosts typically reply with TTL 127 or 128. This helps decide which enumeration paths are worth prioritizing later (e.g. Linux capabilities over Windows services).
 
-![Ping response showing TTL 63](./screenshots/01)
+![Ping response showing TTL 63](./screenshots/01.png)
 
 ### Port scanning
 
