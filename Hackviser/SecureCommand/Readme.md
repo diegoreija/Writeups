@@ -18,7 +18,7 @@ ssh hackviser@172.20.13.182
 
 Authenticating with the given credentials succeeds and drops into a shell as the `hackviser` user. The login banner reveals a **"Master's Message"** — a small ASCII-art Easter egg — hinting that there's more to explore beyond just logging in.
 
-![SSH login and Master's Message banner](./screenshots/01-login.png)
+![SSH login and Master's Message banner](./screenshots/01-ASCII.png)
 
 ## Privilege Escalation
 
