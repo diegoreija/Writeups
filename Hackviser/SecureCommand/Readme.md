@@ -13,12 +13,12 @@ Secure Command is a warmup lab on Hackviser focused on the fundamentals of SSH a
 The lab provides a set of credentials directly (`hackviser:hackviser`), so no prior enumeration is needed to get a foothold — the focus here is on the SSH connection process itself rather than discovery.
 
 ```bash
-ssh hackviser@10.0.0.10
+ssh hackviser@172.20.13.182
 ```
 
 Authenticating with the given credentials succeeds and drops into a shell as the `hackviser` user. The login banner reveals a **"Master's Message"** — a small ASCII-art Easter egg — hinting that there's more to explore beyond just logging in.
 
-![SSH login and Master's Message banner](./screenshots/01-ssh-login.png)
+![SSH login and Master's Message banner](./screenshots/01-login.png)
 
 ## Privilege Escalation
 
@@ -37,7 +37,7 @@ su root
 Password: root
 ```
 
-![Successful root escalation via su](./screenshots/02-su-root.png)
+![Successful root escalation via su](./screenshots/03-root-login.png)
 
 ## Post-Exploitation — Locating the Flag
 
