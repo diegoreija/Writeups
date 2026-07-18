@@ -48,7 +48,7 @@ ls -a
 ```
 
 Browsing from the `hackviser` home directory up through `/home` and `/`, and finally checking root's own home directory, surfaces a hidden file that stands out immediately:
-![Hidden files in root's home directory](./screenshots/03-hidden-files.png)
+![Hidden files in root's home directory](./screenshots/05-directory.png)
 
 Reading it with `cat` reveals the flag:
 
