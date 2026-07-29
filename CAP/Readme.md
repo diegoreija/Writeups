@@ -5,7 +5,6 @@
 | **Difficulty** | ![Difficulty](https://img.shields.io/badge/Difficulty-Easy-brightgreen) |
 | **Release** | 2026-05-23 |
 | **Certifications** | |
-|-------------|-------------------------|
 
 
 <img src="https://cdn.simpleicons.org/hackthebox/9FEF00" width="26" height="26" alt="HackTheBox"/> <img src="https://cdn.simpleicons.org/linux/FCC624" width="26" height="26" alt="Linux"/>
