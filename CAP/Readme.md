@@ -3,6 +3,7 @@
 <img src="https://cdn.simpleicons.org/hackthebox/9FEF00" width="26" height="26" alt="HackTheBox"/> <img src="https://cdn.simpleicons.org/linux/FCC624" width="26" height="26" alt="Linux"/>
 
 ![Difficulty](https://img.shields.io/badge/Difficulty-Easy-brightgreen)
+
 ![Status](https://img.shields.io/badge/Status-In%20Progress-yellow)
 
 **Date:** June 2026
