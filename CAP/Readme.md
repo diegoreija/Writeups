@@ -1,20 +1,55 @@
-# CAP — HackTheBox
+# Hack The Box - Cap (Writeup)
 
-|-------------|-------------------------|
-| **OS** | <img src="https://cdn.simpleicons.org/linux/FCC624" width="26" height="26" alt="Linux"/> |
-| **Difficulty** | ![Difficulty](https://img.shields.io/badge/Difficulty-Easy-brightgreen) |
+![Cap Badge](https://via.placeholder.com/800x200?text=Cap+HackTheBox+Header) <!-- O el badge de HTB -->
+
+| Dificultad | Sistema Operativo | IP | OS Target | Fecha de resolución |
+| :--- | :--- | :--- | :--- | :--- |
+| **Easy** | Linux | `10.10.10.245` | Ubuntu | *DD/MM/YYYY* |
+
+---
+
+## 🛠️ Resumen / Executive Summary
+Un breve párrafo de 3-4 frases que explique de qué va la máquina a alto nivel (sin spoilers directos si quieres, o directamente al grano):
+> **Cap** es una máquina Linux de dificultad fácil que demuestra vulnerabilidades comunes en aplicaciones web como **Insecure Direct Object References (IDOR)** para interceptar archivos pcap y extraer credenciales en texto plano. Posteriormente, se explota una **Linux Capability** mal configurada (`cap_setuid`) para escalar privilegios a `root`.
+
+---
+
+## 🔍 1. Reconocimiento (Reconnaissance)
+### Escaneo de Puertos
+Explicación breve del comando utilizado y por qué.
+
+```bash
+sudo nmap -sCV -p- --min-rate 5000 10.10.10.245 -oN nmap.txt
+
+
+
+<!--# CAP — HackTheBox <img src="https://cdn.simpleicons.org/hackthebox/9FEF00" width="30" height="30" alt="HackTheBox"/>
+
+
+![Status](https://img.shields.io/badge/Status-In%20Progress-yellow)
+| **Name** | CAP|
+|-------|----|
+| **System** | <img src="https://cdn.simpleicons.org/linux/FFFFFF" width="26" height="26" alt="Linux"/>  Linux|
+| **Plataform** | <img src="https://cdn.simpleicons.org/hackthebox/9FEF00" width="30" height="30" alt="HackTheBox"/> |
+| **Difficulty** | Easy |
 | **Release** | 2026-05-23 |
-| **Certifications** | |
 
 
-<img src="https://cdn.simpleicons.org/hackthebox/9FEF00" width="26" height="26" alt="HackTheBox"/> <img src="https://cdn.simpleicons.org/linux/FCC624" width="26" height="26" alt="Linux"/>
+ **SYSTEM:** <img src="https://cdn.simpleicons.org/linux/FFFFFF" width="25" height="25" alt="Linux"/> Linux
+
+ **PLATAFORM:**   <img src="https://cdn.simpleicons.org/hackthebox/9FEF00" width="26" height="26" alt="HackTheBox"/> 
+  
+ **Release**  2026-05-23 
+---
+
+ <img src="https://cdn.simpleicons.org/linux/FCC624" width="26" height="26" alt="Linux"/>
 
 ![Difficulty](https://img.shields.io/badge/Difficulty-Easy-brightgreen)
 
 ![Status](https://img.shields.io/badge/Status-In%20Progress-yellow)
 
 **Date:** June 2026
-
+-->
 ## Summary
 
 Cap is an Easy-rated Linux machine on HackTheBox. The name hints at its two core concepts: **PCAP** network captures and **Linux capabilities**. A web application exposes network traffic captures through an IDOR vulnerability, leaking FTP credentials in cleartext. These credentials grant SSH access, and privilege escalation is achieved through a misconfigured Python capability.
