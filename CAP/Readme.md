@@ -2,7 +2,7 @@
 
 
 | **PLATAFORM** | <img src="https://cdn.simpleicons.org/hackthebox/9FEF00" width="30" height="30" alt="HackTheBox"/> |
-|---|---|
+|----|:---:|
 | **SYSTEM** | <img src="https://cdn.simpleicons.org/linux/FFFFFF" width="30" height="30" alt="Linux"/> |
 | **CERTIFICATIONS** |  |
 | **DATE** | June 2026 |
@@ -29,7 +29,9 @@ ping 10.129.30.28
 
 The response comes back with **TTL 63**, which points to a Linux target — Windows hosts typically reply with TTL 127 or 128. This helps decide which enumeration paths are worth prioritizing later (e.g. Linux capabilities over Windows services).
 
-[Insertar aquí la imagen original]
+![Scanning](./assets/01-ping.png)
+
+<br>
 
 ### Port scanning
 
@@ -41,7 +43,7 @@ nmap -sV -sS 10.129.30.28
 
 `-sS` was used for a fast SYN scan, and `-sV` to fingerprint service versions — version info matters here because it can point to known, exploitable software.
 
-[Insertar aquí la imagen original]
+![Scanning](./assets/02-nmap-scan.png)
 
 **Results:**
 
@@ -63,23 +65,27 @@ Three services stand out for different reasons:
 
 Browsing to port 80 leads to a **Security Dashboard** belonging to a user named `nathan`.
 
-[Insertar aquí la imagen original]
+![Scanning](./assets/03-dashboard.png)
 
 The sidebar includes a **"Security Snapshot"** section that generates network reports. Opening one loads a URL ending in `/data/1` — a numeric, sequential ID is usually worth testing for IDOR, since it suggests reports aren't scoped per-user on the backend. That specific report doesn't contain anything useful, but the ID pattern is the real finding here.
 
 Testing the theory by manually changing the ID to `/data/0` confirms it: the app returns a **previous report that shouldn't be accessible**, revealing a packet capture with 72 recorded packets. This is a classic **Insecure Direct Object Reference (IDOR)** — the app trusts the ID in the URL without checking whether it belongs to the current session.
 
-[Insertar aquí la imagen original]
+![Scanning](./assets/04-idor.png)
+
+<br><br>
 
 ## Traffic Analysis and Credential Extraction
 
 The exposed report allows downloading a `.pcap` file. Since it's a packet capture, the logical next step is opening it in **Wireshark** to inspect what was recorded — if this capture was accessible without authentication, there's a good chance it holds something sensitive.
 
-[Insertar aquí la imagen original]
+![Scanning](./assets/05-wireshark.png)
 
 Filtering for FTP traffic specifically makes sense here, since FTP was already flagged earlier as cleartext. Following the TCP stream confirms the assumption — the full authentication exchange is visible in plain text:
 
-[Insertar aquí la imagen original]
+![Scanning](./assets/06-ftp-creds.png)
+
+<br><br>
 
 ## Initial Access
 
@@ -92,6 +98,8 @@ ssh nathan@10.129.30.28
 This grants a shell as `nathan`.
 
 **User flag:** `[pending]`
+
+<br><br>
 
 ## Privilege Escalation
 
