@@ -4,7 +4,7 @@
 | **PLATAFORM** | <img src="https://cdn.simpleicons.org/hackthebox/9FEF00" width="30" height="30" alt="HackTheBox"/> |
 |----|:---:|
 | **SYSTEM** | <img src="https://cdn.simpleicons.org/linux/FFFFFF" width="30" height="30" alt="Linux"/> |
-| **CERTIFICATIONS** | <img src="./assets/OSCP.png" width="30"> |
+| **CERTIFICATIONS** | <img src="./assets/eJPTv2.png" width="30">   <img src="./assets/OSCP.png" width="30"> |
 | **DATE** | June 2026 |
 | **TOOLS** | Nmap - Wireshark |
 ---
