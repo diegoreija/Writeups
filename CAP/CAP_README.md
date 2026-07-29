@@ -1,11 +1,15 @@
 # CAP — HackTheBox
 
+<img src="https://cdn.simpleicons.org/hackthebox/9FEF00" width="26" height="26" alt="HackTheBox"/>
 
-| Plataforma | OS | Dificultad | Certificación | Fecha | Estado |
-|---|---|---|---|---|---|
-| <img src="https://cdn.simpleicons.org/hackthebox/9FEF00" width="26" height="26" alt="HackTheBox"/> | <img src="https://cdn.simpleicons.org/linux/FCC624" width="20" height="20" alt="Linux"/> | $\color{green}{\textsf{EASY}}$ | N/A | June 2026 | $\color{orange}{\textsf{In Progress}}$ |
+**PLATFORM:** HackTheBox
+**SYSTEM:** <img src="https://cdn.simpleicons.org/linux/FCC624" width="18" height="18" alt="Linux"/> Linux
+**DIFFICULTY:** $\color{green}{\textsf{Easy}}$
+**CERTIFICATION:** N/A
+**DATE:** June 2026
+**STATE:** $\color{orange}{\textsf{In Progress}}$
 
-> **Nota:** el campo "Certificación" indica qué examen concreto (eJPT, OSCP, SC-200...) se apoya en esta máquina para practicar. En CAP no aplica ninguna en particular — se deja en `N/A`. Cuando subas el logo de la certificación correspondiente a `/assets/`, sustituye el texto por `<img src="../assets/NOMBRE.png" width="20" height="20"/>`.
+> **Note:** the "Certification" field indicates which specific exam (eJPT, OSCP, SC-200...) this machine supports practicing for. CAP doesn't map to any particular one, so it's left as `N/A`. Once you upload the certification logo to `/assets/`, replace the text with `<img src="../assets/NAME.png" width="18" height="18"/>`.
 
 ## Summary
 
@@ -23,7 +27,7 @@ ping 10.129.30.28
 
 The response comes back with **TTL 63**, which points to a Linux target — Windows hosts typically reply with TTL 127 or 128. This helps decide which enumeration paths are worth prioritizing later (e.g. Linux capabilities over Windows services).
 
-[Insertar aquí la imagen original]
+[Insert original screenshot here]
 
 ### Port scanning
 
@@ -35,7 +39,7 @@ nmap -sV -sS 10.129.30.28
 
 `-sS` was used for a fast SYN scan, and `-sV` to fingerprint service versions — version info matters here because it can point to known, exploitable software.
 
-[Insertar aquí la imagen original]
+[Insert original screenshot here]
 
 **Results:**
 
@@ -55,23 +59,23 @@ Three services stand out for different reasons:
 
 Browsing to port 80 leads to a **Security Dashboard** belonging to a user named `nathan`.
 
-[Insertar aquí la imagen original]
+[Insert original screenshot here]
 
 The sidebar includes a **"Security Snapshot"** section that generates network reports. Opening one loads a URL ending in `/data/1` — a numeric, sequential ID is usually worth testing for IDOR, since it suggests reports aren't scoped per-user on the backend. That specific report doesn't contain anything useful, but the ID pattern is the real finding here.
 
 Testing the theory by manually changing the ID to `/data/0` confirms it: the app returns a **previous report that shouldn't be accessible**, revealing a packet capture with 72 recorded packets. This is a classic **Insecure Direct Object Reference (IDOR)** — the app trusts the ID in the URL without checking whether it belongs to the current session.
 
-[Insertar aquí la imagen original]
+[Insert original screenshot here]
 
 ## Traffic Analysis and Credential Extraction
 
 The exposed report allows downloading a `.pcap` file. Since it's a packet capture, the logical next step is opening it in **Wireshark** to inspect what was recorded — if this capture was accessible without authentication, there's a good chance it holds something sensitive.
 
-[Insertar aquí la imagen original]
+[Insert original screenshot here]
 
 Filtering for FTP traffic specifically makes sense here, since FTP was already flagged earlier as cleartext. Following the TCP stream confirms the assumption — the full authentication exchange is visible in plain text:
 
-[Insertar aquí la imagen original]
+[Insert original screenshot here]
 
 ## Initial Access
 
@@ -87,7 +91,7 @@ This grants a shell as `nathan`.
 
 ## Privilege Escalation
 
-> **Nota:** sección pendiente de completar. Continuará cuando se retome la máquina — la escalada explota una Linux capability mal configurada asignada a un binario de Python (`getcap`, capability concreta, y exploit final aún por documentar).
+> **Note:** section still pending. To be completed when the machine is revisited — the escalation exploits a misconfigured Linux capability assigned to a Python binary (`getcap` output, the specific capability, and the final exploit are still to be documented).
 
 **Root flag:** `[pending]`
 
