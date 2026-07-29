@@ -1,10 +1,9 @@
 # CAP — HackTheBox
 
-<img src="https://cdn.simpleicons.org/hackthebox/9FEF00" width="26" height="26" alt="HackTheBox"/>
 
 | Plataforma | OS | Dificultad | Certificación | Fecha | Estado |
 |---|---|---|---|---|---|
-| HackTheBox | <img src="https://cdn.simpleicons.org/linux/FCC624" width="20" height="20" alt="Linux"/> Linux | $\color{green}{\textsf{Easy}}$ | N/A | June 2026 | $\color{orange}{\textsf{In Progress}}$ |
+| <img src="https://cdn.simpleicons.org/hackthebox/9FEF00" width="26" height="26" alt="HackTheBox"/> | <img src="https://cdn.simpleicons.org/linux/FCC624" width="20" height="20" alt="Linux"/> Linux | $\color{green}{\textsf{Easy}}$ | N/A | June 2026 | $\color{orange}{\textsf{In Progress}}$ |
 
 > **Nota:** el campo "Certificación" indica qué examen concreto (eJPT, OSCP, SC-200...) se apoya en esta máquina para practicar. En CAP no aplica ninguna en particular — se deja en `N/A`. Cuando subas el logo de la certificación correspondiente a `/assets/`, sustituye el texto por `<img src="../assets/NOMBRE.png" width="20" height="20"/>`.
 
